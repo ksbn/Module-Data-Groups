@@ -6,7 +6,7 @@
 
 // E.g. invert({x : 10, y : 20}), target output: {"10": "x", "20": "y"}
 
-function invert(obj) {
+/* function invert(obj) {
   const invertedObj = {};
 
   for (const [key, value] of Object.entries(obj)) {
@@ -15,6 +15,7 @@ function invert(obj) {
 
   return invertedObj;
 }
+*/
 
 // a) What is the current return value when invert is called with { a: 1 }
 // Now it's: invertedObj.key = value;
@@ -42,3 +43,28 @@ function invert(obj) {
 // invertedObj[value] = key;
 
 // e) Fix the implementation of invert (and write tests to prove it's fixed!)
+
+function invert(obj) {
+  if (typeof obj !== "object" || obj === null || Array.isArray(obj)) {
+    throw new Error("Input must be an object");
+  }
+
+  const invertedObj = {};
+
+  for (const [key, value] of Object.entries(obj)) {
+    if (invertedObj[value]) {
+      if (Array.isArray(invertedObj[value])) {
+        invertedObj[value].push(key);
+      } else {
+        invertedObj[value] = [invertedObj[value], key];
+      }
+    } else {
+      invertedObj[value] = key;
+    }
+  }
+
+  return invertedObj;
+}
+
+module.exports = invert;
+
