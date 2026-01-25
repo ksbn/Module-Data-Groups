@@ -1,5 +1,4 @@
 let intervalId = null;
-let isPaused = false;
 let timeLeft = 0;
 
 function formatTime(seconds) {
@@ -18,13 +17,11 @@ function setAlarm() {
   if (timeLeft <= 0) return;
 
   clearInterval(intervalId);
-  isPaused = false;
   container.classList.remove("blinking");
 
   timeRemaining.textContent = `Time Remaining: ${formatTime(timeLeft)}`;
 
   intervalId = setInterval(() => {
-   if (!isPaused) {
      timeLeft--;
 
     timeRemaining.textContent = `Time Remaining: ${formatTime(timeLeft)}`;
@@ -34,15 +31,8 @@ function setAlarm() {
       playAlarm();
       container.classList.add("blinking");
       }
-    }
   }, 1000);
-}
-
-function pauseAlarm() {
-  isPaused = !isPaused;
-  const pauseButton = document.getElementById("pause");
-  pauseButton.textContent = isPaused ? "Resume" : "Pause";
-}
+} 
 
 function stopAlarm() {
   clearInterval(intervalId);
@@ -52,7 +42,6 @@ function stopAlarm() {
 
   timeRemaining.textContent = "";
   container.classList.remove("blinking");
-  pauseButton.textContent = "Pause";
 }
 
 
