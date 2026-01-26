@@ -35,12 +35,8 @@ autoCheckbox.addEventListener("change", () => {
   if (autoCheckbox.checked) {
     autoStatus.innerText = "ON";
 
-autoCheckbox.addEventListener("change", () => {
-  if (autoCheckbox.checked) {
-    autoStatus.innerText = "ON";
-
     clearInterval(autoInterval); 
-    autoInterval = setInterval(showRandomQuote, 5000);
+    autoInterval = setInterval(showRandomQuote, 60000);
   } else {
     autoStatus.innerText = "OFF";
     clearInterval(autoInterval);
@@ -48,15 +44,6 @@ autoCheckbox.addEventListener("change", () => {
   }
 });
 
-
-// Set interval to change quote automatically every 60 seconds (or 5s for testing)
-    autoInterval = setInterval(showRandomQuote, 60000); // 5000 ms = 5 sec
-  } else {
-    autoStatus.innerText = "OFF";
-    clearInterval(autoInterval);
-    autoInterval = null;
-  }
-});
 
 // Show a quote when the page loads
 window.addEventListener("DOMContentLoaded", showRandomQuote);
