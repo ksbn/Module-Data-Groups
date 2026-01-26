@@ -1,3 +1,68 @@
+// DOM Elements
+const quoteP = document.getElementById("quote");
+const authorP = document.getElementById("author");
+const newQuoteBtn = document.getElementById("new-quote");
+
+// Optional: auto-play elements
+const autoContainer = document.createElement("div");
+const autoLabel = document.createElement("label");
+const autoCheckbox = document.createElement("input");
+const autoStatus = document.createElement("span");
+autoCheckbox.type = "checkbox";
+autoLabel.textContent = "Auto-play: ";
+autoStatus.textContent = "OFF"; 
+
+autoContainer.appendChild(autoLabel);
+autoLabel.appendChild(autoCheckbox);
+autoContainer.appendChild(autoStatus);
+document.body.appendChild(autoContainer);
+
+
+let autoInterval = null;
+
+// Function to display a random quote
+function showRandomQuote() {
+  const randomQuote = pickFromArray(quotes);
+  quoteP.innerText = randomQuote.quote;
+  authorP.innerText = randomQuote.author;
+}
+
+// Event: button click
+newQuoteBtn.addEventListener("click", showRandomQuote);
+
+// Event: auto-play toggle
+autoCheckbox.addEventListener("change", () => {
+  if (autoCheckbox.checked) {
+    autoStatus.innerText = "ON";
+
+autoCheckbox.addEventListener("change", () => {
+  if (autoCheckbox.checked) {
+    autoStatus.innerText = "ON";
+
+    clearInterval(autoInterval); 
+    autoInterval = setInterval(showRandomQuote, 5000);
+  } else {
+    autoStatus.innerText = "OFF";
+    clearInterval(autoInterval);
+    autoInterval = null;
+  }
+});
+
+
+// Set interval to change quote automatically every 60 seconds (or 5s for testing)
+    autoInterval = setInterval(showRandomQuote, 60000); // 5000 ms = 5 sec
+  } else {
+    autoStatus.innerText = "OFF";
+    clearInterval(autoInterval);
+    autoInterval = null;
+  }
+});
+
+// Show a quote when the page loads
+window.addEventListener("DOMContentLoaded", showRandomQuote);
+
+
+
 // DO NOT EDIT BELOW HERE
 
 // pickFromArray is a function which will return one item, at
