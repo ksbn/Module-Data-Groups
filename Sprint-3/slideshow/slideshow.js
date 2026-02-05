@@ -14,6 +14,8 @@ const stopBtn = document.getElementById("stop");
 let currentIndex = 0;
 let autoInterval = null;
 
+stopBtn.disabled = true;
+
 function showImage(index) {
   carouselImg.src = images[index];
 }
@@ -35,6 +37,7 @@ function startAutoForward() {
   clearInterval(autoInterval);
   autoForwardBtn.disabled = true;
   autoBackBtn.disabled = true;
+  stopBtn.disabled = false;
   autoInterval = setInterval(nextImage, 2000);
 }
 
@@ -42,6 +45,7 @@ function startAutoBack() {
   clearInterval(autoInterval);
   autoForwardBtn.disabled = true;
   autoBackBtn.disabled = true;
+  stopBtn.disabled = false;
   autoInterval = setInterval(prevImage, 2000);
 }
 
@@ -50,6 +54,7 @@ function stopAuto() {
   autoInterval = null;
   autoForwardBtn.disabled = false;
   autoBackBtn.disabled = false;
+  stopBtn.disabled = true;
 }
 
 autoForwardBtn.addEventListener("click", startAutoForward);
