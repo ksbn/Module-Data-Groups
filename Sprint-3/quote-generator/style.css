@@ -1,1 +1,78 @@
-/** Write your CSS in here **/
+     body {
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif, sans-serif;
+        text-align: center;
+        padding: 50px;
+        background-color: rgb(229, 157, 234); 
+        min-height: 100vh;
+        position: relative; 
+      }
+      #quote {
+        font-size: 2em;
+        margin: 20px 0;
+        color: #333;
+      }
+      #author {
+        margin-top: 20px;
+        text-align: right;
+        font-size: 1.2em;
+        color: #555;
+        font-style: italic;    
+      }
+
+        button {
+        padding: 10px 20px;
+        font-size: 1em;
+        cursor: pointer;
+        margin-top: 20px;
+        margin-bottom: 10px;
+
+ 
+        background: linear-gradient(145deg, #d4d4d4, #a0a0a0, #f0f0f0, #a0a0a0);
+        background-size: 400% 400%; 
+        color: #222;
+        border: 1px solid #888;
+        border-radius: 6px;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
+
+        animation: metallicShine 3s ease infinite;
+      }
+
+
+        button:hover {
+        box-shadow: 3px 3px 8px rgba(0,0,0,0.4);
+        transform: translateY(-2px);
+      }
+
+
+        button:active {
+        background: linear-gradient(145deg, #b0b0b0, #909090);
+        box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        transform: translateY(1px);
+      }
+
+        @keyframes metallicShine {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
+      .auto-container {
+        margin-top: 20px;
+        font-size: 1em;
+      }
+      .auto-container label {
+        cursor: pointer;
+      }
+      .auto-container span {
+        margin-left: 10px;
+        font-weight: bold;
+      }
+
+      .quote-card {
+         background: white;
+         padding: 40px;
+         max-width: 700px;
+         margin: 40px auto;
+         border-radius: 8px;
+       }
